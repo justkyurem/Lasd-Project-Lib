@@ -16,7 +16,7 @@ using namespace lasd;
 
 // Utility for formatting test results
 void printTestResult(const string& testName, bool success) {
-    cout << (success ? " [PASS] " : "[FAIL] ") << testName << endl;
+    cout << (success ? " [PASS] " : "[ERROR] ") << testName << endl;
 }
 
 void testListConstructors() {
@@ -1256,171 +1256,20 @@ void runListTests() {
 }
 
 
-// List tests
-void listtest() {
-    bool selection = false;
-    while (!selection) {
-        int testtype;
-        cout << endl << "Che tipo di test vuoi eseguire?" << endl
-             << "1. Test completo sulla lista" << endl
-             << "2. Test costruttori" << endl
-             << "3. Test operazioni base" << endl
-             << "4. Test Map" << endl
-             << "5. Test eccezioni" << endl
-             << "6. Test con stringhe" << endl
-             << "7. Test Fold" << endl
-             << "0. Torna indietro" << endl;
-        string input;
-        cin >> input;
-        testtype = stoi(input);
-        switch (testtype) {
-            case 0:
-                selection = true;
-                break;
-            case 1:
-                runListTests();
-                break;
-            case 2:
-                testListConstructors();
-                break;
-            case 3:
-                testListOperations();
-                break;
-            case 4:
-                testListMap();
-                break;
-            case 5:
-                testListExceptions();
-                break;
-            case 6:
-                testListWithStrings();
-                break;
-            case 7:
-                testListFold();
-                break;
-            default:
-                cout << "Input non valido" << endl;
-        }
-    }
-}
-
-// Vector tests
-void vectortest() {
-    bool selection = false;
-    while (!selection) {
-        int testtype;
-        cout << endl << "Che tipo di test vuoi eseguire?" << endl
-             << "1. Test completo su Vector" << endl
-             << "2. Test costruttori" << endl
-             << "3. Test operazioni base" << endl
-             << "4. Test eccezioni" << endl
-             << "5. Test Traverse e Map" << endl
-             << "6. Test Fold" << endl
-             << "7. Test SortableVector" << endl
-             << "0. Torna indietro" << endl;
-        string input;
-        cin >> input;
-        testtype = stoi(input);
-        switch (testtype) {
-            case 0:
-                selection = true;
-                break;
-            case 1:
-                runVectorTests();
-                break;
-            case 2:
-                testVectorConstructors();
-                break;
-            case 3:
-                testVectorOperations();
-                break;
-            case 4:
-                testVectorExceptions();
-                break;
-            case 5:
-                testVectorTraverseAndMap();
-                break;
-            case 6:
-                testVectorFold();
-                break;
-            case 7:
-                testSortableVector();
-                break;
-            default:
-                cout << "Input non valido" << endl;
-        }
-    }
-}
-
-// Set tests
-void settest() {
-    bool selection = false;
-    while (!selection) {
-        int testtype;
-        cout << endl << "Che tipo di test vuoi eseguire?" << endl
-             << "1. Test completo su SetLst" << endl
-             << "2. Test completo su SetVec" << endl
-             << "3. Confronto tra implementazioni" << endl
-             << "4. Test costruttori e operazioni base su SetLst" << endl
-             << "5. Test costruttori e operazioni base su SetVec" << endl
-             << "6. Test OrderedDictionary su SetLst" << endl
-             << "7. Test OrderedDictionary su SetVec" << endl
-             << "8. Test eccezioni su SetLst" << endl
-             << "9. Test eccezioni su SetVec" << endl
-             << "0. Torna indietro" << endl;
-        string input;
-        cin >> input;
-        testtype = stoi(input);
-        switch (testtype) {
-            case 0:
-                selection = true;
-                break;
-            case 1:
-                runSetLstTests();
-                break;
-            case 2:
-                runSetVecTests();
-                break;
-            case 3:
-                compareSetImplementations();
-                break;
-            case 4:
-                testSetConstructorsAndBasicOperations<SetLst<int>>();
-                break;
-            case 5:
-                testSetConstructorsAndBasicOperations<SetVec<int>>();
-                break;
-            case 6:
-                testOrderedDictionaryOperations<SetLst<int>>();
-                break;
-            case 7:
-                testOrderedDictionaryOperations<SetVec<int>>();
-                break;
-            case 8:
-                testSetExceptions<SetLst<int>>();
-                break;
-            case 9:
-                testSetExceptions<SetVec<int>>();
-                break;
-            default:
-                cout << "Input non valido" << endl;
-        }
-    }
-}
 
 // Main menu
 void mytest() {
     bool selection = false;
     while (!selection) {
         auto testtype = 0;
-        cout << endl << "Test menu' " << endl
-             << "0. Esci" << endl
-             << "1. Test su List" << endl
-             << "2. Test su Vector" << endl
-             << "3. Test su Set" << endl
-             << "4. Test 1,2,3" << endl
-             << "5. Test Prof" << endl
-             << "6. Suite Completa" << endl;
+        cout << endl
+                << "======================" << endl
+             << "           TEST MENU " << endl
+             << "1. LasdTest" << endl
+             << "2. MyTest" << endl
+             << "0. Exit" << endl
+             << "======================" << endl;           
+        cout << "Select test type -> ";
         string input;
         cin >> input;
         testtype = stoi(input);
@@ -1429,34 +1278,17 @@ void mytest() {
                 selection = true;
                 break;
             case 1:
-                listtest();
+                lasdtest();
                 break;
             case 2:
-                vectortest();
-                break;
-            case 3:
-                settest();
-                break;
-            case 4:
                 runListTests();
                 runVectorTests();
                 runSetLstTests();
                 runSetVecTests();
                 compareSetImplementations();
-                break;
-            case 5:
-                lasdtest();
-                break;
-            case 6:
-                runListTests();
-                runVectorTests();
-                runSetLstTests();
-                runSetVecTests();
-                compareSetImplementations();
-                lasdtest();
                 break;
             default:
-                cout << "Input non valido" << endl;
+                cout << "Invalid input" << endl;
         }
     }
 }

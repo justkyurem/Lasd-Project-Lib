@@ -1,11 +1,11 @@
 namespace lasd {
 
-    /* ************************************************************************** */
+/* ************************************************************************** */
 
-    // TestableContainer
+// TestableContainer
 
-    // No implementations required for TestableContainer since all methods are pure virtual or defaulted
+// No implementations required for TestableContainer since all methods are pure virtual or defaulted
 
-    /* ************************************************************************** */
+/* ************************************************************************** */
 
 }
